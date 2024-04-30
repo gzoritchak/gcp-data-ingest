@@ -1,0 +1,24 @@
+<configuration>
+
+    <!--    Remove the logging of the configuration-->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+
+    <appender name="gcpLoggingAppender"
+              class="com.google.cloud.logging.logback.LoggingAppender">
+        <redirectToStdout>true</redirectToStdout>
+
+        <!--  To remove error messages before first logging -->
+        <flushLevel>OFF</flushLevel>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-5level %d{HH:mm:ss.SSS} [%thread] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
